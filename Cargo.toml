@@ -1,0 +1,15 @@
+[package]
+name = "pget"
+version = "0.1.1"
+edition = "2021"
+description = "A small command-line utility for generating cryptographically secure random values with a user-defined bit length."
+license = "MIT"
+repository = "https://github.com/Skhoron/pget"
+readme = "README.md"
+
+[dependencies]
+rand = "0.8"
+
+[profile.release]
+lto = true
+strip = true
