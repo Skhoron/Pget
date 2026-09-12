@@ -1,8 +1,7 @@
 use rand::rngs::OsRng;
 use rand::RngCore;
 
-const BASE64_CHARS: &[u8] =
-    b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+const BASE64_CHARS: &[u8] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
 /// Upper bound on bit length. Without it, a mistyped or malicious value
 /// makes `generate_bytes` try to allocate hundreds of megabytes.
@@ -261,7 +260,10 @@ mod tests {
     fn format_decimal_spans_multiple_10e9_groups() {
         // 2^32, which needs two base-10^9 groups: exercises the
         // group-boundary logic (leading group unpadded, rest zero-padded).
-        assert_eq!(format_decimal(&[0x01, 0x00, 0x00, 0x00, 0x00]), "4294967296");
+        assert_eq!(
+            format_decimal(&[0x01, 0x00, 0x00, 0x00, 0x00]),
+            "4294967296"
+        );
         // 10^9 + 1: low group is "000000001", not "1".
         assert_eq!(format_decimal(&[0x3B, 0x9A, 0xCA, 0x01]), "1000000001");
     }
